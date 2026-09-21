@@ -1,0 +1,14 @@
+{
+  "name": "@stakeflow/shared",
+  "version": "0.1.0",
+  "private": true,
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "echo 'shared build placeholder'",
+    "test": "echo 'shared test placeholder'",
+    "lint": "echo 'shared lint placeholder'",
+    "typecheck": "echo 'shared typecheck placeholder'",
+    "clean": "echo 'shared clean placeholder'"
+  }
+}

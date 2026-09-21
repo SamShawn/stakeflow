@@ -1,0 +1,13 @@
+{
+  "name": "@stakeflow/frontend",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "echo 'frontend dev placeholder'",
+    "build": "echo 'frontend build placeholder'",
+    "test": "echo 'frontend test placeholder'",
+    "lint": "echo 'frontend lint placeholder'",
+    "typecheck": "echo 'frontend typecheck placeholder'",
+    "clean": "echo 'frontend clean placeholder'"
+  }
+}

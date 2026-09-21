@@ -1,0 +1,13 @@
+node_modules
+dist
+build
+out
+.next
+.turbo
+coverage
+pnpm-lock.yaml
+*.min.js
+packages/contracts/lib
+packages/contracts/cache
+packages/contracts/out
+packages/contracts/broadcast

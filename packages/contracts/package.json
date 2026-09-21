@@ -1,0 +1,12 @@
+{
+  "name": "@stakeflow/contracts",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "build": "echo 'contracts build placeholder'",
+    "test": "echo 'contracts test placeholder'",
+    "lint": "echo 'contracts lint placeholder'",
+    "typecheck": "echo 'contracts typecheck placeholder'",
+    "clean": "echo 'contracts clean placeholder'"
+  }
+}
