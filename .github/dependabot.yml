@@ -1,0 +1,73 @@
+version: 2
+
+updates:
+  # ============ npm 依赖 ============
+  - package-ecosystem: 'npm'
+    directory: '/'
+    schedule:
+      interval: 'weekly'
+      day: 'monday'
+      time: '09:00'
+      timezone: 'Asia/Shanghai'
+    open-pull-requests-limit: 5
+    versioning-strategy: 'increase'
+    labels:
+      - 'deps'
+      - 'automated'
+    commit-message:
+      prefix: 'chore(deps)'
+      include: 'scope'
+    groups:
+      # 开发依赖合并为一个 PR
+      dev-dependencies:
+        dependency-type: 'development'
+        update-types:
+          - 'minor'
+          - 'patch'
+      # 生产依赖合并为一个 PR
+      production-dependencies:
+        dependency-type: 'production'
+        update-types:
+          - 'minor'
+          - 'patch'
+    ignore:
+      # 大版本升级需手动处理
+      - dependency-name: '*'
+        update-types:
+          - 'version-update:semver-major'
+
+  # ============ GitHub Actions ============
+  - package-ecosystem: 'github-actions'
+    directory: '/'
+    schedule:
+      interval: 'weekly'
+      day: 'monday'
+      time: '09:00'
+      timezone: 'Asia/Shanghai'
+    open-pull-requests-limit: 3
+    labels:
+      - 'ci'
+      - 'automated'
+    commit-message:
+      prefix: 'ci(deps)'
+    groups:
+      actions:
+        patterns:
+          - '*'
+
+  # ============ 子包（可选，pnpm workspace 通常根目录统一管理） ============
+  # 如果各包有独立依赖管理需求，可放开以下配置
+  # - package-ecosystem: 'npm'
+  #   directory: '/packages/frontend'
+  #   schedule:
+  #     interval: 'weekly'
+  #   labels:
+  #     - 'deps'
+  #     - 'frontend'
+  # - package-ecosystem: 'npm'
+  #   directory: '/packages/backend'
+  #   schedule:
+  #     interval: 'weekly'
+  #   labels:
+  #     - 'deps'
+  #     - 'backend'

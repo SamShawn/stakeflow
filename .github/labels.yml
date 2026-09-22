@@ -1,0 +1,83 @@
+# 标签体系（建议手动在 GitHub Settings → Labels 中创建）
+# 或后续用 label-sync Action 自动同步
+
+# 类型
+- name: 'bug'
+  color: 'd73a4a'
+  description: 'Bug 或异常行为'
+
+- name: 'enhancement'
+  color: 'a2eeef'
+  description: '新功能或改进'
+
+- name: 'documentation'
+  color: '0075ca'
+  description: '文档相关'
+
+- name: 'refactor'
+  color: 'fbca04'
+  description: '重构'
+
+- name: 'security'
+  color: 'ee0701'
+  description: '安全相关'
+
+# 模块
+- name: 'contracts'
+  color: '5319e7'
+  description: '智能合约'
+
+- name: 'frontend'
+  color: '1d76db'
+  description: '前端'
+
+- name: 'backend'
+  color: '0e8a16'
+  description: '后端'
+
+- name: 'shared'
+  color: 'bfd4f2'
+  description: '共享包'
+
+- name: 'ci'
+  color: 'b4a8d1'
+  description: 'CI/CD'
+
+# 优先级
+- name: 'P0'
+  color: 'b60205'
+  description: '必须做'
+
+- name: 'P1'
+  color: 'fbca04'
+  description: '应该做'
+
+- name: 'P2'
+  color: 'c2e0c6'
+  description: '可以做'
+
+# 状态
+- name: 'needs-triage'
+  color: 'ededed'
+  description: '需要分类'
+
+- name: 'in-progress'
+  color: 'fbca04'
+  description: '进行中'
+
+- name: 'blocked'
+  color: 'd73a4a'
+  description: '被阻塞'
+
+- name: 'good-first-issue'
+  color: '7057ff'
+  description: '适合新手'
+
+# 自动
+- name: 'deps'
+  color: '0366d6'
+  description: '依赖更新'
+
+- name: 'automated'
+  color: 'ededed'
+  description: '自动创建'

@@ -1,0 +1,34 @@
+# ============================================
+# CODEOWNERS
+# 每个路径对应的负责人，PR 时会自动请求 review
+# 文档：<https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners>
+# ============================================
+
+# 默认负责人（兜底）
+*                           @SamShawn
+
+# 合约
+/packages/contracts/        @SamShawn
+/packages/shared/src/abis/  @SamShawn
+/packages/shared/src/constants/addresses.ts  @SamShawn
+
+# 前端
+/packages/frontend/         @SamShawn
+
+# 后端
+/packages/backend/          @SamShawn
+
+# 共享包
+/packages/shared/           @SamShawn
+
+# CI/CD 与仓库配置
+/.github/                   @SamShawn
+
+# 文档
+/docs/                      @SamShawn
+
+# 根配置
+/package.json               @SamShawn
+/pnpm-workspace.yaml        @SamShawn
+/turbo.json                 @SamShawn
+/commitlint.config.js       @SamShawn
