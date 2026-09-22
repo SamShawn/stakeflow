@@ -5,7 +5,7 @@
   "description": "StakeFlow - 多链质押与奖励分发协议",
   "packageManager": "pnpm@9.0.0",
   "engines": {
-    "node": ">=20.0.0",
+    "node": ">=24.0.0",
     "pnpm": ">=9.0.0"
   },
   "scripts": {
