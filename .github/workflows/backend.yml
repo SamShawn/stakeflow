@@ -1,0 +1,95 @@
+name: Backend
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'packages/backend/**'
+      - 'packages/shared/**'
+      - 'pnpm-lock.yaml'
+      - '.github/workflows/backend.yml'
+  pull_request:
+    paths:
+      - 'packages/backend/**'
+      - 'packages/shared/**'
+      - 'pnpm-lock.yaml'
+      - '.github/workflows/backend.yml'
+
+concurrency:
+  group: backend-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    name: Test Backend
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: stakeflow_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+      redis:
+        image: redis:7
+        ports:
+          - 6379:6379
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    env:
+      DATABASE_URL: postgresql://postgres:postgres@localhost:5432/stakeflow_test
+      REDIS_URL: redis://localhost:6379
+      JWT_SECRET: test-secret-for-ci-only
+      NODE_ENV: test
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build shared package
+        run: pnpm --filter @stakeflow/shared build
+
+      - name: Prisma generate
+        run: pnpm --filter @stakeflow/backend prisma:generate
+
+      - name: Prisma migrate deploy
+        run: pnpm --filter @stakeflow/backend exec prisma migrate deploy
+
+      - name: Typecheck
+        run: pnpm --filter @stakeflow/backend typecheck
+
+      - name: Lint
+        run: pnpm --filter @stakeflow/backend lint
+
+      - name: Unit tests
+        run: pnpm --filter @stakeflow/backend test
+
+      - name: Build
+        run: pnpm --filter @stakeflow/backend build
