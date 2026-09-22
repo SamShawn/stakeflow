@@ -70,3 +70,4 @@ pnpm test
 ## License
 
 MIT
+test
