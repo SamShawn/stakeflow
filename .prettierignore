@@ -1,13 +1,31 @@
+# 依赖
 node_modules
+
+# 构建产物
 dist
 build
 out
 .next
 .turbo
 coverage
+
+# 锁文件
 pnpm-lock.yaml
+
+# 压缩文件
 *.min.js
+*.min.css
+
+# 合约依赖与产物
 packages/contracts/lib
 packages/contracts/cache
 packages/contracts/out
 packages/contracts/broadcast
+
+# 自动生成
+packages/shared/src/abis
+packages/backend/prisma/migrations
+
+# 其他
+*.log
+.DS_Store

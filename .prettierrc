@@ -16,6 +16,12 @@
         "singleQuote": false,
         "bracketSpacing": false
       }
+    },
+    {
+      "files": "*.md",
+      "options": {
+        "proseWrap": "preserve"
+      }
     }
   ]
 }
