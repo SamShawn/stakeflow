@@ -1,0 +1,59 @@
+[profile.default]
+src = "src"
+out = "out"
+libs = ["lib"]
+test = "test"
+script = "script"
+
+# Solidity 编译器
+solc = "0.8.24"
+evm_version = "cancun"
+
+# 优化器
+optimizer = true
+optimizer_runs = 200
+via_ir = false
+
+# 字节码
+bytecode_hash = "none"
+cbor_metadata = false
+
+# 测试
+gas_reports = ["*"]
+fuzz = { runs = 256 }
+invariant = { runs = 256, depth = 15 }
+
+# 格式
+fmt = { line_length = 120, tab_width = 4, bracket_spacing = false }
+
+remappings = [
+    "@openzeppelin/contracts/=lib/openzeppelin-contracts/contracts/",
+    "@openzeppelin/contracts-upgradeable/=lib/openzeppelin-contracts-upgradeable/contracts/",
+    "forge-std/=lib/forge-std/src/",
+    "openzeppelin-contracts/=lib/openzeppelin-contracts/",
+    "openzeppelin-contracts-upgradeable/=lib/openzeppelin-contracts-upgradeable/",
+]
+
+# RPC
+[rpc_endpoints]
+local = "<http://127.0.0.1:8545>"
+sepolia = "${SEPOLIA_RPC}"
+mainnet = "${MAINNET_RPC}"
+polygon_mumbai = "${POLYGON_MUMBAI_RPC}"
+
+# Etherscan 验证
+[etherscan]
+sepolia = { key = "${ETHERSCAN_API_KEY}", chain = 11155111 }
+mainnet = { key = "${ETHERSCAN_API_KEY}", chain = 1 }
+polygon_mumbai = { key = "${ETHERSCAN_API_KEY}", chain = 80001 }
+
+# 编译配置（各 profile 可覆盖）
+[profile.ci]
+fuzz = { runs = 10000 }
+invariant = { runs = 512, depth = 32 }
+verbosity = 3
+
+[profile.optimized]
+optimizer = true
+optimizer_runs = 1000000
+via_ir = true

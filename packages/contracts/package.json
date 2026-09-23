@@ -2,11 +2,20 @@
   "name": "@stakeflow/contracts",
   "version": "0.1.0",
   "private": true,
+  "description": "StakeFlow 智能合约",
   "scripts": {
-    "build": "echo 'contracts build placeholder'",
-    "test": "echo 'contracts test placeholder'",
-    "lint": "echo 'contracts lint placeholder'",
-    "typecheck": "echo 'contracts typecheck placeholder'",
-    "clean": "echo 'contracts clean placeholder'"
+    "build": "forge build",
+    "build:sizes": "forge build --sizes",
+    "test": "forge test -vvv",
+    "test:fuzz": "forge test --fuzz-runs 10000 -vvv",
+    "test:coverage": "forge coverage --report summary",
+    "test:gas": "forge snapshot",
+    "lint": "forge fmt --check",
+    "format": "forge fmt",
+    "clean": "forge clean && rm -rf out cache",
+    "anvil": "anvil",
+    "deploy:local": "forge script script/DeployStaking.s.sol --rpc-url <http://127.0.0.1:8545> --broadcast",
+    "deploy:sepolia": "forge script script/DeployStaking.s.sol --rpc-url $SEPOLIA_RPC --broadcast --verify",
+    "verify:sepolia": "forge script script/DeployStaking.s.sol --rpc-url $SEPOLIA_RPC --verify"
   }
 }
